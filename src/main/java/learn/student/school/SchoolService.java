@@ -1,5 +1,8 @@
 package learn.student.school;
 
+import learn.student.student.StuDto;
+import learn.student.student.StuRepository;
+import learn.student.student.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +13,6 @@ import java.util.List;
 public class SchoolService {
     private final SchMapper schMapper;
     private final SchRepository schRepository;
-
 
     public SchDto saveSchool(SchDto dto){
         var school = schMapper.dtoToSchool(dto);
@@ -26,4 +28,5 @@ public class SchoolService {
     public void deleteSchool(Long id){
         schRepository.deleteById(id);
     }
+
 }

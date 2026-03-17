@@ -34,4 +34,21 @@ public class StuController {
          return ResponseEntity.ok(stuDtoList);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<StuDto> updateStudent(
+            @PathVariable Long id,
+            @RequestBody StuDto stuDto
+    ){
+       return ResponseEntity.status(HttpStatus.ACCEPTED)
+               .body(stuServices.updateStudent(id,stuDto));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<StuDto> patchUpdate(
+            @PathVariable Long id,
+            @RequestBody PatchStudentDto dto
+    ){
+       return ResponseEntity.status(HttpStatus.ACCEPTED)
+                .body(stuServices.patchStudent(id,dto));
+    }
 }

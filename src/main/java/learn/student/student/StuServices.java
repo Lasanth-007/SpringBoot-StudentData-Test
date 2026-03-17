@@ -27,4 +27,26 @@ public class StuServices {
         List<Student> studentList = stuRepository.findAll();
         return stuMapper.toStuDtoList(studentList);
     }
+
+    public StuDto updateStudent(Long id,StuDto dto){
+        Student student = stuRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Student not found"));
+
+        stuMapper.updateStudentWithSchool(dto,student,schRepository);
+
+        Student updated = stuRepository.save(student);
+        return stuMapper.toDto(updated);
+    }
+
+    public StuDto patchStudent(Long id,PatchStudentDto dto){
+        Student student = stuRepository.findById(id)
+                .orElseThrow();
+
+        stuMapper.patchStudentWithSchool(dto,student,schRepository);
+
+        Student patched = stuRepository.save(student);
+
+        return stuMapper.toDto(patched);
+
+    }
 }
