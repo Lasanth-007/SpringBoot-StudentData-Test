@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### ymal password ###
-application.yml
+application.yaml
